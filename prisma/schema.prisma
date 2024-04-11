@@ -10,16 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Vehicle {
-  licensePlate  String          @id
-  type          String // Motocycle or Car
-  vehicleRented VehicleRented[]
-}
-
 model VehicleRented {
-  id                  String  @id @default(uuid())
-  vehicleLicensePlate String
-  vehicle             Vehicle @relation(fields: [vehicleLicensePlate], references: [licensePlate])
-  hours               Int
-  price               Float
+  licensePlate String @id
+  type         String // Motocycle or Car
+  rentedHours  Int
+  rentedPrice  Float
 }
