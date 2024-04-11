@@ -11,17 +11,15 @@ datasource db {
 }
 
 model Vehicle {
-  licensePlace  String          @id
+  licensePlate  String          @id
   type          String // Motocycle or Car
   vehicleRented VehicleRented[]
 }
 
 model VehicleRented {
   id                  String  @id @default(uuid())
-  vehicleLicensePlace String
-  vehicle             Vehicle @relation(fields: [vehicleLicensePlace], references: [licensePlace])
+  vehicleLicensePlate String
+  vehicle             Vehicle @relation(fields: [vehicleLicensePlate], references: [licensePlate])
   hours               Int
   price               Float
 }
-
-
